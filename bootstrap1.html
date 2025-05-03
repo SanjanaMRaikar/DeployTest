@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-control:invalid {
+            border-color: #dc3545;
+        }
+
+        .form-control:valid {
+            border-color: #198754;
+        }
+
+        .form-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-control {
+            padding-left: 2.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <form class="needs-validation" novalidate>
+            <div class="form-group mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <i class="bi bi-person form-icon"></i>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                <div class="invalid-feedback">Please supply your first name</div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <i class="bi bi-person form-icon"></i>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                <div class="invalid-feedback">Please supply your last name</div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="email" class="form-label">E-Mail</label>
+                <i class="bi bi-envelope form-icon"></i>
+                <input type="email" class="form-control" id="email" placeholder="E-Mail Address" required>
+                <div class="invalid-feedback">Please supply your email address</div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="phone" class="form-label">Phone #</label>
+                <i class="bi bi-telephone form-icon"></i>
+                <input type="tel" class="form-control" id="phone" placeholder="(845)555-1212" required>
+                <div class="invalid-feedback">Please supply your phone number</div>
+            </div>
+
+           
+            <div class="form-group mb-3">
+                <label for="address" class="form-label">Address</label>
+                <i class="bi bi-house-door form-icon"></i>
+                <input type="text" class="form-control" id="address" placeholder="Address" required>
+                <div class="invalid-feedback">Please supply your street address</div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="city" class="form-label">City</label>
+                <i class="bi bi-building form-icon"></i>
+                <input type="text" class="form-control" id="city" placeholder="City" required>
+                <div class="invalid-feedback">Please supply your city</div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="state" class="form-label">State</label>
+                <select class="form-select" id="state" required>
+                    <option value="">Please select your state</option>
+                    <option>California</option>
+                    <option>New York</option>
+                    <option>Texas</option>
+                </select>
+                <div class="invalid-feedback">Please select your state</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label d-block">Do you have hosting?</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="hosting" id="hostingYes" value="yes" required>
+                    <label class="form-check-label" for="hostingYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="hosting" id="hostingNo" value="no">
+                    <label class="form-check-label" for="hostingNo">No</label>
+                </div>
+                <div class="invalid-feedback d-block">Please select an option</div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="description" class="form-label">Project Description</label>
+                <textarea class="form-control" id="description" placeholder="Project Description" required></textarea>
+                <div class="invalid-feedback">Please enter a project description</div>
+            </div>
+            <button type="submit" class="btn btn-warning">
+                <i class="bi bi-send-fill"></i> Send
+            </button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (() => {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</body>
+
+</html>
